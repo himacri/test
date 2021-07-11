@@ -1,18 +1,12 @@
 #:kivy 2.0.0
 <Test>:
-    cols: 2
-    rows: 4
-    col_default_height: 10
-    row_default_height: 30
-    #orientation: 'vertical'
+    canvas:
+        Color:
+            rgba: 0.3, 0.3, 0.5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
     rv: rv
-
-    TextInput:
-        id: keyWD
-        text: ''
-        pos: 100,root.top-200
-        size: 300,100
-
     Button:
         text: "SEARCH"
         font_size: 50
@@ -23,13 +17,33 @@
         background_color: 0.5, 0.5, 0.75, 1
         on_press: root.click()
 
+    TextInput:
+        id: keyWD
+        text: ''
+        pos: 100,root.top-200
+        size: 300,100
+
     Label:
         id: result
-        text: '----------------------------------------'
+        text: '------------------------------------------------------------------------------------------------------------------------------------------------------------------'
         color: 1, 1, 1
         font_size:40
         pos: root.right*0.5 ,root.top-280
         #size: 300,50
+
+    BoxLayout:
+        id: box01
+        canvas:
+            Color:
+                rgb: 1,1,0
+        size: 500,500
+        pos: 20,20
+        AsyncImage: #AsyncImage
+            id: image01
+            allow_stretch: True
+            #nocache: True
+            source: "./01.jpg"
+            #background_normal: root.img_src
 
     RecycleView:
         size: root.right-40,root.top-840
@@ -48,31 +62,6 @@
             height: self.minimum_height
             orientation: 'vertical'
             spacing: dp(8)
-
-
-    #AsyncImage: #AsyncImage
-    #    id: image01
-    #    allow_stretch: True
-    #    #nocache: True
-    #    source: "./01.jpg"
-    #    #background_normal: root.img_src
-
-    BoxLayout:
-        cols: 2
-        rows: 4
-        orientation: 'vertical'
-        Label:
-            id: L01
-            text: "01"
-
-        Label:
-            id: L02
-            text: "02"
-
-        Label:
-            id: L03
-            text: "03"
-
 
 #スクロール内ボタン設定
 <VariousButtons>:
@@ -95,7 +84,7 @@
         background_color: 0,0,0,1
         color: 1, 1 ,1 ,1
         on_press:
-            self.on_select_button(self)
+            root.on_select_button(self)
     Label:
         text: root.value
         background_normal: ''

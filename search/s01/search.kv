@@ -90,12 +90,13 @@
     photo: ''
 
     Button:
+        id: ListButton
         text: root.no
         background_normal: ''
         background_color: 0,0,0,1
         color: 1, 1 ,1 ,1
         on_press:
-            self.on_select_button(self)
+            root.on_select_button(self)
     Label:
         text: root.value
         background_normal: ''
